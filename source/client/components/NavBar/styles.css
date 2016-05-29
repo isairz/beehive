@@ -1,0 +1,33 @@
+.nav {
+  position: relative;
+  height: 50px;
+  background: #e7e7e7;
+}
+
+.header {
+  float: left;
+  .brand {
+    font-weight: 800;
+    color: #563d7c;
+    padding: 15px 15px;
+    font-size: 18px;
+    line-height: 20px;
+  }
+}
+
+.items {
+  float:left;
+  > ul {
+    margin: 0;
+    > li {
+      list-style: none;
+      float: left;
+      > a {
+        display: block;
+        font-size: 14px;
+        padding: 15px;
+        line-height: 20px;
+      }
+    }
+  }
+}

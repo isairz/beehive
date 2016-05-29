@@ -1,0 +1,19 @@
+.container {
+}
+
+.center {
+  margin: 0 auto;
+}
+
+.tCenter {
+  text-align: center;
+}
+
+.footer {
+  composes: tCenter;
+
+  margin-top: 12px;
+  font-size: 0.6em;
+
+  i { color: #bd1282; }
+}
