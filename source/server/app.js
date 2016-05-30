@@ -2,10 +2,12 @@ import path from 'path'
 import express from 'express'
 import devProps from '../../config/webpack/devProps'
 import config from '../../config/page'
+import api from './api'
 
 const app = express()
 
 app.use('/static', express.static(path.join(process.cwd(), '.build')))
+app.use('/api', api)
 
 /**
  * @TODO move the html out of the server dir

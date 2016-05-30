@@ -1,7 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
 
-import 'static/vendor/font-awesome/css/font-awesome.min.css'
+import AddManga from '../components/Admin/AddManga'
 import styles from './styles.css'
 
 const Manager = {
@@ -15,7 +15,7 @@ const Manager = {
   },
 }
 
-const App = ({list}) => (
+export default ({ list }) => (
   <div>
     <table>
       <thead>
@@ -37,7 +37,7 @@ const App = ({list}) => (
         ))}
       </tbody>
     </table>
+
+    <AddManga />
   </div>
 )
-
-export default App
