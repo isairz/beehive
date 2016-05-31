@@ -1,10 +1,16 @@
 import express from 'express'
+import bodyParser from 'body-parser'
+import multer from 'multer'
 
-const router = express.Router()
+const api = express.Router()
 
-// define the home page route
-router.get('/:tag', (req, res) => {
-  res.json('Birds home page')
+api.use(bodyParser.json())
+api.use(bodyParser.urlencoded({ extended: true }))
+
+api.post('/upload', multer({ dest: "./tmp" }).array('files'), (req, res) => {
+  console.log(req.body)
+  console.log(req.files)
+  res.end()
 })
 
-module.exports = router
+module.exports = api

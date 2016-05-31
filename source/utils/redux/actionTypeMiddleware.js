@@ -5,7 +5,7 @@ export default () => next => action => {
         a => {
           console.log(`%c Action Type: ${a.type} `, 'background: #c6285c; color: #fff', a); // eslint-disable-line
         }
-      );
+      )
     } else {
       console.log(`%c Action Type: ${action.type}, `, 'background: #c6285c; color: #fff', action) // eslint-disable-line
     }
@@ -13,5 +13,5 @@ export default () => next => action => {
     console.log(`%c Thunk Action: ${action.name}`, 'background: #07afd8; color: #fff'); // eslint-disable-line
   }
 
-  return next(action);
-};
+  return next(action)
+}

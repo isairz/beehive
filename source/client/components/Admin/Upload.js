@@ -1,21 +1,13 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import Dropzone from 'react-dropzone'
 import _ from 'lodash'
 
+import { upload } from '../../../common/reducers/upload'
+
 import styles from './styles.css'
 
-const Manager = {
-  Manga: {
-    'Category' : "array",
-    'Name' : "string",
-    'Authors' : "array",
-    'Published' : "array",
-    'Charactors' : "array",
-    'Tags': "array",
-  },
-}
-
-export default class extends React.Component {
+class Upload extends React.Component {
   constructor () {
     super()
     this.state = {
@@ -27,35 +19,29 @@ export default class extends React.Component {
     this.setState({ files })
   }
 
-  onSubmit () {
-    const data = new FormData()
-    data.append('file', this.state.files[0])
-    fetch('/upload/manga', {
-      method: 'POST',
-      body: data,
-    })
-  }
-
   render () {
     const { files } = this.state
-    console.log(files)
+    // FIXME: use redux-form
     return (
       <div>
-        <form id="updateManga" action="action_page.php" method="POST">
+        <form onSubmit={(e) => this.props.onSubmit(e)}>
+          <input type="button" value="Add" onClick={() => this.refs.dropzone.open()} />
+          <input type="submit" />
           <Dropzone
             ref="dropzone"
             className={styles.dropzone}
+            name="files"
             onDrop={(e) => this.onDrop(e)}
             disableClick
           >
             {_.map(files, file => (
-              <div className={styles.fileCard}>
+              <div key={file.name} className={styles.fileCard}>
                 <div className={styles.thumbnail}>
                   <img src={file.preview} alt={file.name} />
                 </div>
                 <div className={styles.content}>
                   <div className={styles.textfield}>
-                    <input defaultValue={file.name.replace(/\.[^/.]+$/, '')} />
+                    <input name="title" defaultValue={file.name.replace(/\.[^/.]+$/, '')} />
                     <label>FileName</label>
                   </div>
                   <div>{file.type}</div>
@@ -64,10 +50,19 @@ export default class extends React.Component {
               </div>
             ))}
           </Dropzone>
-          <input type="button" onClick={() => this.refs.dropzone.open()} />
-          <input type="button" onClick={() => this.onSubmit()} />
         </form>
       </div>
     )
   }
 }
+
+
+export default connect(
+  () => ({}),
+  dispatch => ({
+    onSubmit: (e) => {
+      e.preventDefault()
+      dispatch(upload(new FormData(e.target)))
+    },
+  })
+)(Upload)

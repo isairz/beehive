@@ -1,8 +1,9 @@
-import thunkMiddleware from 'redux-thunk';
-import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
-import reducers from './reducers';
-import { routerReducer } from 'react-router-redux';
-import actionTypeMiddleware from 'utils/redux/actionTypeMiddleware';
+import thunkMiddleware from 'redux-thunk'
+import { createStore, compose, applyMiddleware, combineReducers } from 'redux'
+import { apiMiddleware } from 'redux-api-middleware'
+import reducers from '../common/reducers'
+import { routerReducer } from 'react-router-redux'
+import actionTypeMiddleware from 'utils/redux/actionTypeMiddleware'
 
 const rootReducer = combineReducers(
   Object.assign(
@@ -10,29 +11,30 @@ const rootReducer = combineReducers(
     reducers,
     { routing: routerReducer }
   )
-);
+)
 
 const configureStore = (initialState = {}) => {
   const store = compose(
     applyMiddleware(
       actionTypeMiddleware,
-      thunkMiddleware
+      thunkMiddleware,
+      apiMiddleware,
     )
-  )(createStore)(rootReducer, initialState);
+  )(createStore)(rootReducer, initialState)
 
   if (module.hot) {
     module.hot.accept(
-      './reducers',
+      '../common/reducers',
       () => {
-        const nextReducer = require('./reducers');
-        store.replaceReducer(nextReducer);
+        const nextReducer = require('../common/reducers')
+        store.replaceReducer(nextReducer)
       }
-    );
+    )
   }
 
-  return store;
-};
+  return store
+}
 
-const store = configureStore(window.__INITIAL_STATE__ || {});
+const store = configureStore(window.__INITIAL_STATE__ || {})
 
-export default store;
+export default store
