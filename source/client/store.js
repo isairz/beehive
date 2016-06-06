@@ -18,8 +18,9 @@ const configureStore = (initialState = {}) => {
     applyMiddleware(
       actionTypeMiddleware,
       thunkMiddleware,
-      apiMiddleware,
-    )
+      apiMiddleware
+    ),
+    window.devToolsExtension ? window.devToolsExtension() : f => f
   )(createStore)(rootReducer, initialState)
 
   if (module.hot) {

@@ -6,8 +6,8 @@ export default ({ pages }) => (
   <div className={styles.container}>
     {_.map(pages,
       page => (
-        <div className={styles.page}>
-          <img src={'http://schoolidol.org:8080/' + page} role="presentation" />
+        <div key={page} className={styles.page}>
+          <img src={page} role="presentation" />
         </div>
       )
     )}

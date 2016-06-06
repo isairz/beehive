@@ -1,9 +1,7 @@
-import { combineReducers } from 'redux'
-
+import manga from './manga'
 import upload from './upload'
 
-const reducers = {
+export default {
+  manga,
   upload,
 }
-
-export default combineReducers(reducers)

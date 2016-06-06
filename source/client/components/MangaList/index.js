@@ -8,15 +8,15 @@ export default ({ list }) => (
   <div className={styles.container}>
     {_.map(list,
       item => (
-        <div className={styles.item}>
-          <Link to={item.link}>
+        <div key={item.id} className={styles.item}>
+          <Link to={item.link || `/manga/${item.id}`}>
             <img
               className={styles.thumbnail}
-              src={'http://schoolidol.org:8080/' + item.thumbnail}
-              alt={item.name}
+              src={item.thumbnail || `/file/${item.id}/0s.jpg`}
+              alt={item.title}
             />
             <div className={styles.title}>
-              {item.name}
+              {item.title}
             </div>
           </Link>
         </div>

@@ -26,8 +26,7 @@ export default (
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
       <Route path="/manga" component={MangaHome} />
-      <Route path="/manga/:series" component={MangaInfo} />
-      <Route path="/mangas/:series/:chapter" component={MangaViewer} />
+      <Route path="/manga/:id" component={MangaViewer} />
 
       {/* Auth!! */}
       <Route path="/admin" component={Admin} />
