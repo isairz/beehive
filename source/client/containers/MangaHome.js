@@ -10,7 +10,11 @@ const MangaHome = ({ loading, list, load }) => {
     if (!loading) load()
     return <div /> // FIXME: Loading Page
   }
-  return <MangaList list={list} />
+  const reverse = _.reduceRight(list, (rlist, item) => {
+    rlist.push(item)
+    return rlist
+  }, [])
+  return <MangaList list={reverse} />
 }
 
 export default connect(
