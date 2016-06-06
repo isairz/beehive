@@ -52,13 +52,17 @@
   },
   "dependencies": {
     "body-parser": "^1.15.1",
+    "decompress": "^4.0.0",
     "exports-loader": "^0.6.3",
     "express": "^4.13.4",
     "file-loader": "^0.8.5",
+    "fs-promise": "^0.5.0",
     "immutable": "3.8.1",
     "imports-loader": "^0.6.5",
     "later": "^1.2.0",
     "lodash": "^4.11.1",
+    "mongoose": "^4.4.19",
+    "mongoose-auto-increment": "^5.0.1",
     "multer": "^1.1.0",
     "normalize.css": "^4.1.1",
     "postcss-nested": "^1.0.0",
@@ -72,6 +76,7 @@
     "redux-api-middleware": "^1.0.2",
     "redux-thunk": "2.0.1",
     "rethinkdbdash": "^2.3.4",
+    "sharp": "^0.15.0",
     "winston": "^2.2.0"
   },
   "scripts": {

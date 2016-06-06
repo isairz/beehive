@@ -1,5 +1,8 @@
 import path from 'path'
 import express from 'express'
+
+import './db'
+
 import devProps from '../../config/webpack/devProps'
 import config from '../../config/page'
 import api from './api'

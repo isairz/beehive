@@ -2,15 +2,15 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import multer from 'multer'
 
+import mangalist from './mangalist'
+import upload from './upload'
+
 const api = express.Router()
 
 api.use(bodyParser.json())
 api.use(bodyParser.urlencoded({ extended: true }))
 
-api.post('/upload', multer({ dest: "./tmp" }).array('files'), (req, res) => {
-  console.log(req.body)
-  console.log(req.files)
-  res.end()
-})
+api.get('/manga', mangalist)
+api.post('/upload', multer({ dest: './temp' }).array('files'), upload)
 
 module.exports = api
