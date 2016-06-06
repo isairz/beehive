@@ -1,5 +1,6 @@
 import path from 'path'
 import express from 'express'
+import compression from 'compression'
 
 import './db'
 
@@ -9,6 +10,7 @@ import api from './api'
 
 const app = express()
 
+app.use(compression())
 app.use('/file', express.static(path.join(process.cwd(), 'files')))
 app.use('/static', express.static(path.join(process.cwd(), '.build')))
 app.use('/api', api)
