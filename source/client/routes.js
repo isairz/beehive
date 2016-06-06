@@ -5,9 +5,9 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import store from './store'
 
 import App from './containers/App'
-import Home from './containers/Home'
+// import Home from './containers/Home'
 import MangaHome from './containers/MangaHome'
-import MangaInfo from './containers/MangaInfo'
+// import MangaInfo from './containers/MangaInfo'
 import MangaViewer from './containers/MangaViewer'
 import NotFound from './containers/NotFound'
 
@@ -24,7 +24,7 @@ const history = syncHistoryWithStore(browserHistory, store)
 export default (
   <Router history={history}>
     <Route path="/" component={App}>
-      <IndexRoute component={Home} />
+      <IndexRoute component={MangaHome} />
       <Route path="/manga" component={MangaHome} />
       <Route path="/manga/:id" component={MangaViewer} />
 
